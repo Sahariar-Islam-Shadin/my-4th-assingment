@@ -187,3 +187,86 @@ hr{
     border-radius: 6px;
 
 }
+.card-h2{
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+    color: #64748B;
+    margin-bottom: 20px;
+
+}
+
+.btn-four{
+    font-size: 14px;
+    color: #002C5C;
+    font-weight: 500;
+    border: none;
+    line-height: 20px;
+    padding: 8px 12px 8px 12px;
+    background-color: #EEF4FF;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+
+.btn-four:hover{
+    background-color: #002C5C;
+    color: #EEF4FF;
+
+}
+
+.card-p{
+    font-size: 14px;
+    line-height: 20px;
+    color: #323B49;
+    font-weight: 400;
+    margin-top: 8px;
+
+}
+
+.flex-two{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+
+    
+}
+
+.btn-five{
+    font-size: 14px;
+    color: #10B981;
+    font-weight: 500;
+    line-height: 20px;
+    padding: 8px 12px 8px 12px;
+    background-color: #ffffff;
+    border: 1px solid #10B981;
+    border-radius: 4px;
+    text-transform: uppercase;    
+
+}
+
+.btn-five:hover{
+    background-color: #10B981;
+    color: #FFFFFF;
+}
+
+.btn-six{
+    font-size: 14px;
+    color: #EF4444;
+    font-weight: 500;
+    line-height: 20px;
+    padding: 8px 12px 8px 12px;
+    background-color: #ffffff;
+    border: 1px solid #EF4444;
+    border-radius: 4px;
+    text-transform: uppercase;
+    
+}
+.btn-six:hover{
+    color: #FFFFFF;
+    background-color: #EF4444;
+}
+
+.eight{
+    margin-bottom: 60px;
+}
