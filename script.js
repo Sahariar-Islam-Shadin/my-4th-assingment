@@ -63,4 +63,148 @@ function toggleBtn(id) {
   calculateCards();
 }
 
+//  Main Container Click Listener
+const mainContainer = document.querySelector("main");
+mainContainer.addEventListener("click", function (event) {
+  // Delete Button
+  if (event.target.classList.contains("btn-delete")) {
+    const card = event.target.closest(".card");
+    const jobName = card.querySelector(".jobName").innerText;
+
+    card.remove();
+
+    // Remove from filtered arrays
+    interViews = interViews.filter((item) => item.jobName !== jobName);
+    rejected = rejected.filter((item) => item.jobName !== jobName);
+
+    if (currentStatus === "interview-btn") renderInterview();
+    if (currentStatus === "rejected-btn") renderRejected();
+
+    calculateCards();
+  }
+
+  // Interview Button
+  if (event.target.classList.contains("btn-interview")) {
+    const clickedElement = event.target.closest(".card");
+    const jobName = clickedElement.querySelector(".jobName").innerText;
+
+    const cardInfo = {
+      jobName: jobName,
+      jobtitle: clickedElement.querySelector(".jobTitle").innerText,
+      time: clickedElement.querySelector(".jobmean").innerText,
+      jobThing: clickedElement.querySelector(".jobThing").innerText,
+      statusBtn: "Interview",
+    };
+
+    const jobExists = interViews.find(
+      (item) => item.jobName === cardInfo.jobName,
+    );
+    if (!jobExists) {
+      interViews.push(cardInfo);
+    }
+
+    // Remove from rejected
+    rejected = rejected.filter((item) => item.jobName !== cardInfo.jobName);
+    clickedElement.querySelector(".status").innerText = "Interview";
+
+    if (currentStatus === "interview-btn") renderInterview();
+    if (currentStatus === "rejected-btn") renderRejected();
+
+    calculateCards();
+  }
+
+  // Rejected Button
+  else if (event.target.classList.contains("btn-rejected")) {
+    const clickedElement = event.target.closest(".card");
+    const jobName = clickedElement.querySelector(".jobName").innerText;
+
+    const cardInfo = {
+      jobName: jobName,
+      jobtitle: clickedElement.querySelector(".jobTitle").innerText,
+      time: clickedElement.querySelector(".jobmean").innerText,
+      jobThing: clickedElement.querySelector(".jobThing").innerText,
+      statusBtn: "Rejected",
+    };
+
+    const jobExists = rejected.find(
+      (item) => item.jobName === cardInfo.jobName,
+    );
+    if (!jobExists) {
+      rejected.push(cardInfo);
+    }
+    // Remove from interview
+    interViews = interViews.filter((item) => item.jobName !== cardInfo.jobName);
+    clickedElement.querySelector(".status").innerText = "Rejected";
+
+    if (currentStatus === "interview-btn") renderInterview();
+    if (currentStatus === "rejected-btn") renderRejected();
+
+    culculateCards();
+  }
+});
+
+//  Rendering Functions
+function renderInterview() {
+  allFilterSection.innerHTML = "";
+  if (interViews.length === 0) {
+    allFilterSection.innerHTML = `
+      <div class="bg-white p-5  rounded-lg shadow-md space-y-3 mt-10 card">
+      <img class="mx-auto" src="./jobs.png" alt="">
+      <h2 class="text-center text-3xl font-bold text-gray-800">No jobs available</h2>
+      <p class="text-center text-xl text-gray-600">Check back soon for new job opportunities</p>
+    </div>
+
+      `;
+    return;
+  }
+
+  interViews.forEach((inter) => {
+    allFilterSection.appendChild(createCardHTML(inter));
+  });
+}
+//  Render Rejected Function
+
+function renderRejected() {
+  allFilterSection.innerHTML = "";
+  if (rejected.length === 0) {
+    allFilterSection.innerHTML = `
+    <div class="bg-white p-5  rounded-lg shadow-md space-y-3 mt-10 card">
+      <img class="mx-auto" src="./jobs.png" alt="">
+      <h2 class="text-center text-3xl font-bold text-gray-800">No jobs available</h2>
+      <p class="text-center text-xl text-gray-600">Check back soon for new job opportunities</p>
+    </div>
+      `;
+    return;
+  }
+
+  rejected.forEach((reject) => {
+    allFilterSection.appendChild(createCardHTML(reject));
+  });
+}
+
+function createCardHTML(data) {
+  const div = document.createElement("div");
+  div.className = "bg-white p-5 rounded-lg shadow-md space-y-3 mt-10 card";
+  div.innerHTML = `
+    <div class="flex justify-between">
+        <div>
+            <h3 class="jobName">${data.jobName}</h3>
+            <p class="jobTitle text-gray-600">${data.jobtitle}</p>
+        </div>
+        <div>
+            <img class="btn-delete cursor-pointer" src="Trash.png" alt="Delete">
+        </div>
+    </div>
+    <p class=" jobmean text-gray-600">${data.time}</p>
+    <button class="status px-6 py-3 bg-gray-200">${data.statusBtn}</button>
+    <p class="jobThing">${data.jobThing}</p>
+    <div class="flex gap-3">
+        <button class="btn-interview px-6 py-2 border border-green-500 text-green-500 font-bold rounded hover:bg-green-50 hover:cursor-pointer">INTERVIEW</button>
+        <button class="btn-rejected px-6 py-2 border border-red-500 text-red-500 font-bold rounded hover:bg-red-50 hover:cursor-pointer">REJECTED</button>
+    </div>
+  `;
+  return div;
+}
+calculateCards();
+
 
