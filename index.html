@@ -8,7 +8,7 @@
     <!-- favicon icons -->
     <link rel="shortcut icon" href="./jobs.png" type="image/x-icon">
 
-    <!-- taiwind -->
+    <!-- tailwind -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
     <!-- google fonts -->
@@ -49,3 +49,68 @@
     </header>
     <hr class="w-[80%] text-gray-300 mx-auto my-5">
     <main class="w-[80%] mx-auto">
+
+
+
+                <!-- new section -->
+
+
+        <!-- 3 btn all interview and rejected -->
+        <section>
+            <div class="flex justify-between">
+                <p class="font-bold text-xl">Available jobs</p>
+                <p id="availableJobsCount"><span id="count">0</span> of 0 jobs</p>
+            </div>
+            <div class="flex mx-auto gap-2 mt-[20px]">
+                <button onclick="toggleBtn('all-btn')" id="all-btn"
+                    class="bg-blue-500 text-white font-bold py-2 px-5 rounded">All </button>
+                <button onclick="toggleBtn('interview-btn')" id="interview-btn"
+                    class="bg-white text-black font-bold py-2 px-4 rounded ">Interview</button>
+                <button onclick="toggleBtn('rejected-btn')" id="rejected-btn"
+                    class="bg-white text-black font-bold py-2 px-4 rounded ">Rejected</button>
+            </div>
+        </section>
+
+        <!-- add new card or new element -->
+        <section id="allFilter" class="hidden">
+        </section>
+
+        <!--main card section -->
+        <section id="allCard-container" class="mt-6 grid grid-cols-1 gap-6">
+            <!-- card-01 -->
+            <div data-id='1' class="card bg-white p-5 rounded-lg shadow-md space-y-3">
+                <div class="flex justify-between">
+                    <div>
+                        <h3 class="jobName">Mobile First Crop</h3>
+                        <p class="jobTitle text-gray-600">React Native Developer</p>
+                    </div>
+                    <div>
+                        <img class="btn-delete" src="Trash.png" alt="">
+                    </div>
+
+                </div>
+                <p class=" jobmean text-gray-600">Remote • Full-time • $130,000 - $175,000</p>
+                <button class="status px-6  py-3 bg-gray-200">Not Applied</button>
+                <p class="jobThing">Build cross-platform mobile applications using React Native. Work on products used
+                    by millions of
+                    users worldwide.</p>
+                <div class="flex gap-2">
+                    <button
+                        class="btn-interview px-4 py-2 border border-green-500 text-green-500 font-bold rounded">INTERVIEWS</button>
+                    <button
+                        class="btn-rejected px-4 py-2 border border-red-500 text-red-500 font-bold rounded">REJECTED</button>
+                </div>
+            </div>
+
+            <!-- card-02 -->
+            <div data-id='2' class="card bg-white p-5 rounded-lg shadow-md space-y-3">
+                <div class="flex justify-between">
+                    <div>
+                        <h3 class="jobName">WebFlow Agency</h3>
+                        <p class="jobTitle text-gray-600">Web Designer & Developer</p>
+                    </div>
+                    <div>
+                        <img class="btn-delete" src="Trash.png" alt="">
+                    </div>
+
+                </div>
